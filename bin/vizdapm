@@ -1,5 +1,3 @@
-#!/bin/bash
-#
 # Copyright 2011, 2012, 2013 Wolfson Microelectronics plc
 # Author: Dimitris Papastamos <dp@opensource.wolfsonmicro.com>
 #
@@ -23,9 +21,12 @@ fi
 
 widgets="$1"
 outfile="$2"
-graphviztmp=$(mktemp)
+graphviztmp="$outfile"
 
-trap "{ rm -f $graphviztmp; exit 1; }" SIGINT SIGTERM EXIT
+echo "DAPM-DEBUGFS: $widgets"
+echo "OUTFILE: $graphviztmp"
+
+#trap "{ rm -f $graphviztmp; exit 1; }" SIGINT SIGTERM EXIT
 
 widget_active() {
 	local w="$1"
@@ -65,16 +66,4 @@ done
 cd - >/dev/null
 
 echo "}" >> "$graphviztmp"
-
-echo ""
-if [ "${outfile##*.}" = "png" ]; then
-    echo -n "Generating $outfile..."
-    dot -Kfdp -Tpng "$graphviztmp" -o "$outfile"
-    echo "OK!"
-else
-    mv "$graphviztmp" "$outfile"
-    chmod a=rw "$outfile"
-
-    echo "Generate PNG with:"
-    echo "dot -Kfdp -Tpng $outfile -o $outfile.png"
-fi
+exit 0
