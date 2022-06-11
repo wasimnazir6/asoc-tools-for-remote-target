@@ -16,8 +16,8 @@ adb shell "sh %DEBUG_PATH%/vizdapm %ASOC_TOP% %BOARD_OUT%/dapm_route.dot"
 
 :: Get the file
 mkdir %HOST_OUT%
-dotfile=%HOST_OUT%\dapm_route.dot
-outfile=%HOST_OUT%\dapm_route.png
+set dotfile=%HOST_OUT%\dapm_route.dot
+set outfile=%HOST_OUT%\dapm_route.png
 adb pull %BOARD_OUT%/dapm_route.dot %dotfile%
 
 echo ""
