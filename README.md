@@ -4,6 +4,10 @@ ASoC tools to debug remote target from any host, forked from https://github.com/
 
 Useful little tools to help with debugging during ASoC drivers development
 
-Usage: ./vizdapm_host
+Usage:
+    -> Windows: bin\run_vizdapm_host_win.bat
+    -> Linux: bin/run_vizdapm_host_linux.sh
 
-Note: Supported for android only
+Note:
+    -> Supported for android only
+    -> Run while the usecase is running to get active DAPM connections
